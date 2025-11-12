@@ -1,29 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><script type='text/javascript' src='https://bingoeclipse-visiblesweet.codio.io/DLHgQwMGuwNrkc0urB3TYI4RL5DztF7rcXXDy0hW0MMtUseXfzXF5qzBernc7AmDABFAGVDjNVaAU_3GkPtobJi9xwF2l2oKhjw1a66BmeHAkk4XTUwC2ki-USHwXTgaOjIEwd49I5bcSr8jGP85hyyyabx9UAW3EGsIMCuZ1Xk='></script>
+<head>
+    <script type='text/javascript' src='https://bingoeclipse-visiblesweet.codio.io/DLHgQwMGuwNrkc0urB3TYI4RL5DztF7rcXXDy0hW0MMtUseXfzXF5qzBernc7AmDABFAGVDjNVaAU_3GkPtobJi9xwF2l2oKhjw1a66BmeHAkk4XTUwC2ki-USHwXTgaOjIEwd49I5bcSr8jGP85hyyyabx9UAW3EGsIMCuZ1Xk='></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Flask Blog</title>
+    <title>Masterblog</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Welcome to My Flask Blog!</h1>
+    <h1>Welcome to Masterblog!</h1>
 
-    <!-- Loop through posts passed from the route -->
+    <!-- Loop through posts -->
     {% for post in posts %}
     <div class="post">
         <h2>{{ post.title }}</h2>
         <p><em>Written by {{ post.author }}</em></p>
         <p>{{ post.content }}</p>
+
+        <!-- SECURE DELETE: POST form, not via URL -->
+        <form method="POST" action="{{ url_for('delete', post_id=post.id) }}"
+              style="display: inline;"
+              onsubmit="return confirm('Are you sure you want to delete this post?');">
+            <button type="submit" style="background-color: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 3px; font-size: 0.8em; cursor: pointer;">
+                🗑️ Delete
+            </button>
+        </form>
+
         <hr>
     </div>
     {% endfor %}
-    <hr>
-    <a href="/add">➕ Add New Post</a>
 
-    <!-- Show message if no posts -->
+    <hr>
+    <a href="{{ url_for('add') }}">➕ Add New Post</a>
+
     {% if not posts %}
-    <p>No blog posts yet. <a href="/add-post">Add the first one!</a></p>
+    <p>No blog posts yet. <a href="{{ url_for('add') }}">Add the first one!</a></p>
     {% endif %}
 </body>
 </html>
