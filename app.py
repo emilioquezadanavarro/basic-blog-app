@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 import json
 
 app = Flask(__name__)
@@ -16,10 +16,63 @@ def load_posts():
 # Load the posts when the app starts
 posts = load_posts()
 
+# Save post function
+def save_posts(posts_to_save):
+    with open('posts.json', 'w') as f:
+        json.dump(posts_to_save, f, indent=4)
+
+# 1 - Index route
 @app.route('/')
 def index():
     """ Pass posts to the template """
     return render_template('index.html', posts = posts)
+
+# 2 - Add route
+@app.route('/add', methods=['GET','POST'])
+def add():
+    if request.method == 'POST':
+        # Get form data from add.html
+        author = request.form.get('author')
+        title = request.form.get('title')
+        content = request.form.get('content')
+
+        # Validation all fields are filled
+        if author and title and content:
+
+            # Generate new ID for storage
+            if posts:
+                max_id = max(post['id'] for post in posts)
+                new_id = max_id + 1
+            else:
+                new_id = 1
+
+            # Create a new post directory
+
+            new_post = {
+                'id': new_id,
+                'author': author,
+                'title': title,
+                'content': content
+            }
+
+            # Add the new post to post list
+
+            posts.append(new_post)
+
+            # Save to Json file
+
+            save_posts(posts)
+
+            # Return to index page to see the updated
+            # list of posts
+
+            return redirect(url_for('index'))
+
+        else:
+            return "Error: All fields are required", 400
+
+    # GET response
+    return render_template('add.html')
 
 
 if __name__ == '__main__':
