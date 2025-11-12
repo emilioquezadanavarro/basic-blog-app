@@ -101,6 +101,35 @@ def delete(post_id):
         # Post not found
         return "Post not found", 404
 
+#4 - Update post route
+@app.route('/update/<int:post_id>', methods=['GET','POST'])
+def update(post_id):
+    # Find the post with matching ID
+    post_to_edit = None
+    for post in posts:
+        if post['id'] == post_id:
+            post_to_edit = post
+            break
+
+    if not post_to_edit:
+        return "Post not found", 404
+
+    if request.method == 'POST':
+
+        # Update with the info from form data
+
+        post_to_edit['author'] = request.form.get('author')
+        post_to_edit['title'] = request.form.get('title')
+        post_to_edit['content'] = request.form.get('content')
+
+        # Save changes to Json file
+        save_posts(posts)
+
+        # Return to index page to see updated version
+        return redirect(url_for('index'))
+
+    return render_template('update.html', post=post_to_edit)
+
 if __name__ == '__main__':
     app.run(host="127.0.0.1", port=5000, debug=True)
 
