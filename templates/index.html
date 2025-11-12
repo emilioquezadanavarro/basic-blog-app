@@ -15,7 +15,14 @@
     <div class="post">
         <h2>{{ post.title }}</h2>
         <p><em>Written by {{ post.author }}</em></p>
-        <p>{{ post.content }}</p>
+        <p class="post-content">{{ post.content }}</p>
+
+        <!-- UPDATE  -->
+    <form method="GET" action="{{ url_for('update', post_id=post.id) }}" style="display: inline;">
+        <button type="submit" style="background-color: #ffc107; color: black; border: none; padding: 5px 10px; border-radius: 3px; font-size: 0.8em; cursor: pointer; margin-right: 5px;">
+            ✏️ Update
+        </button>
+    </form>
 
         <!-- SECURE DELETE: POST form, not via URL -->
         <form method="POST" action="{{ url_for('delete', post_id=post.id) }}"
