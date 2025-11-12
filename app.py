@@ -27,7 +27,7 @@ def index():
     """ Pass posts to the template """
     return render_template('index.html', posts = posts)
 
-# 2 - Add route
+# 2 - Add post route
 @app.route('/add', methods=['GET','POST'])
 def add():
     if request.method == 'POST':
@@ -74,6 +74,32 @@ def add():
     # GET response
     return render_template('add.html')
 
+# 3 - Delete post route
+@app.route('/delete/<int:post_id>', methods=['POST'])
+def delete(post_id):
+    # Find the post with matching ID
+    post_to_delete = None
+    for post in posts:
+        if post['id'] == post_id:
+            post_to_delete = post
+            break
+
+    if post_to_delete:
+
+        # Remove from list
+
+        posts.remove(post_to_delete)
+
+        # Save to Json file
+
+        save_posts(posts)
+
+        # Return to index page to see updated version
+        return redirect(url_for('index'))
+
+    else:
+        # Post not found
+        return "Post not found", 404
 
 if __name__ == '__main__':
     app.run(host="127.0.0.1", port=5000, debug=True)
