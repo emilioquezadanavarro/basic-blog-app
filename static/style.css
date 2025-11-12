@@ -30,3 +30,9 @@ h1 {
     white-space: pre-wrap;
     word-wrap: break-word;
 }
+
+.subtitle{
+    text-align: center;
+    display: block;
+    margin-top: -10px;
+}
