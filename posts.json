@@ -1,14 +1,20 @@
 [
     {
         "id": 1,
-        "author": "John Doe",
-        "title": "First Post",
-        "content": "This is my first post."
+        "author": "Barak Obama",
+        "title": "Our Amazing Tokyo Family Adventure",
+        "content": "What an incredible week in Tokyo!\r\n\r\nThis city truly has something for everyone. We went from the futuristic lights and sounds of Shibuya Crossing to the peaceful, ancient atmosphere of the Meiji Shrine all in one day.\r\n\r\nThe kids absolutely loved exploring Harajuku, with all the colorful street fashion and tasty crepes. And the food... wow! We ate our weight in delicious ramen, fresh sushi, and amazing snacks from the local markets.\r\n\r\nIt was a whirlwind of new sights, sounds, and flavors, and we made so many unforgettable memories as a family. We're already planning our next trip back!"
     },
     {
         "id": 2,
-        "author": "Jane Doe",
-        "title": "Second Post",
-        "content": "This is another post."
+        "author": "Arnold Schwarzenegger",
+        "title": "You MUST See Chainsaw Man in Cinemas!",
+        "content": "This is not a drill! Chainsaw Man \u2013 The Movie: Reze Arc is finally here and it is absolutely WILD.\r\n\r\nI just saw it and wow... the animation is on another level, the fights are insane, and it hits right in the feels. \ud83d\udca5 Whether you're a manga reader or just love the anime, you need to see this on the biggest screen possible.\r\n\r\nTrust me, you are not ready for this. Go get your tickets now!"
+    },
+    {
+        "id": 3,
+        "author": "Contentin Tarantino",
+        "title": "\ud83c\udfa7 On Repeat: The Sound of PolyPrisma",
+        "content": "If you're looking for your new favorite artist, you need to check out PolyPrisma, the incredible music project by Emilio Quezada.\r\n\r\nI've had his tracks on a loop. \"Shibuya Lights\" is an absolute vibe, so immersive and atmospheric.\r\n\r\nBut the song that really got me is \"One plus one equals four.\" He wrote it about the birth of his second child, and you can just feel that personal story and emotion woven into the music. It\u2019s so powerful.\r\n\r\nSeriously, this is next-level creativity. Go listen to PolyPrisma now!"
     }
 ]
