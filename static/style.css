@@ -25,3 +25,8 @@ h1 {
 .post p {
     margin: 10px 0;
 }
+
+.post-content {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
